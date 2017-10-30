@@ -1,0 +1,87 @@
+<div class="container" style="border: 1px solid red">
+<h1>Add a new word</h1>
+
+<%= form_for @word do | form | %>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+      <br>
+      <%= form.fields_for :definitions do | definition_form | %>
+        <%= definition_form.label :definition %>
+        <%= definition_form.text_field :content %> 
+      <% end %>
+      <%= form.submit 'Save' %>
+    <% end %>
+
+
+</div>
+</div>
+
+
+
+<!--
+
+<%= form_for @word do  |f|%>
+    <h3>New word:</h3>
+
+    <%= f.fields_for :definitions do |field| %>
+        <%= field.label "Content" %>
+        <%= field.text_field :content %>
+    <% end %>
+
+    <%=f.submit  %>
+<% end %>
+
+
+
+
+
+
+<%#= form_for @word do |f| %>
+  Word:
+  <ul>
+    <%#= f.fields_for :words do |definition_form| %>
+      <li>
+        <%#= definition_form.label :content %>
+        <%#= definition_form.text_field :content %>
+        <%#= definition_form.submit :content %>
+        
+      </li>
+    <%# end %>
+  </ul>
+<%# end %>
+
+
+
+
+
+
+
+<%#= form_for @word do |f| %>
+  <%# if @word.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <%# for message in @word.errors.full_messages %>
+          <li><%#= message %></li>
+        <%# end %>
+      </ul>
+    </div>
+  <%# end %>
+  <div class="field">
+    <%#= f.label :name %>
+    <%#= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%#= f.label :user_id %>
+    <%#= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%#= f.label :content %>
+    <%#= f.text_field :content %>
+  </div>
+  
+  <div class="actions"><%#= f.submit %></div>
+<%# end %>
+<br>
+<%#= link_to "Back", root_path %>
+</div>-->

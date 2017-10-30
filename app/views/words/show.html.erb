@@ -1,0 +1,8 @@
+<div class="container" style="border: 1px solid red">
+    <div class = "col-md-8" style="border: 1px solid red">
+        <h1><%= @word.name %></h1>
+        <h3>• <%= @word.definitions[0][:content] %></h3>
+        <%= link_to "Back", root_path %>    
+    </div>
+
+</div>

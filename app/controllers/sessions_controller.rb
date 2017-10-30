@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+        @words = Word.all
     end
 
     def create

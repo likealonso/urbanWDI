@@ -3,5 +3,17 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:new, :create, :index]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :words
+  resources :definitions
   get '/login', to: 'sessions#new'
+  get '/search', to: 'words#search'
+  
 end
+
+# root 'users#index'
+# resources :users do
+# resources :words, shallow: true do
+# resources :definitions
+# end
+# end
+# get '/login', to: 'sessions#new'
