@@ -4,12 +4,15 @@
     <title>UrbanRails</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% @words = Word.all %>
+
   <body>
-    <div class="container" style="border: 1px solid red">
+    <div class="container" style="border: 1px solid red; background-color: #2aafa9">
       <p>
         <% if current_user %>
           Welcome, <%= current_user.name %>
@@ -21,11 +24,14 @@
           <%= link_to 'Sign Up', new_user_path %>
         <% end %>
           &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to "Home", root_path %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <%= flash[:notice] %>
           
-        <%= link_to "Home", root_path %>
+      
       </p>
-      <h1 style="text-align:center; border: 1px solid red">Urban Rails</h1>
+      <h1 style="text-align:center; border: 1px solid red; color: #17252a; 
+      font-family: 'Lato', sans-serif; font-weight:bold; font-size: 80px">Urban Rails</h1>
       <br>
       <div style= "text-align:center; border: 1px solid red">
         <%= form_tag search_path, method: :get do %>
@@ -43,9 +49,9 @@
       <br>
       <br>
       <div class= "col-md-4" style="border: 4px solid red; float:right" >
-          <% @words.each do |f| %>
-          <h3>• <%= link_to f.name, word_path(f) %>  </h3>
-          <%end %>
+          <% @words.each do |w| %>
+            <h3><%= link_to w.name, word_path(w) %></h3>
+          <% end %>
       </div>
       
     <%= yield %>

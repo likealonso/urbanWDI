@@ -1,19 +1,15 @@
 <div class="container" style="border: 1px solid red">
-<h1>Add a new word</h1>
+    <h4><%= flash[:alert] %></h4>
+    <h1>Add a new word</h1>
 
-<%= form_for @word do | form | %>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-      <br>
-      <%= form.fields_for :definitions do | definition_form | %>
-        <%= definition_form.label :definition %>
-        <%= definition_form.text_field :content %> 
-      <% end %>
-      <%= form.submit 'Save' %>
+    <%= form_for @word do | form | %>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <br>
+        <%= label_tag 'Definition' %>
+        <%= text_field_tag :definition %>
+        <%= form.submit 'Save' %>
     <% end %>
-
-
-</div>
 </div>
 
 

@@ -1,0 +1,11 @@
+<div class='container' style="border: 1px solid red" >
+    
+    <div class = "col-md-8" style="border: 1px solid red" >
+        <h2><%= link_to @words.first.name, word_path(@words.first) %> </h2>
+        <h4> • <%= @words.first.definitions[0].content %> </h4>
+
+    </div>
+    
+</div>
+
+

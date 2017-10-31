@@ -11,49 +11,45 @@ class WordsController < ApplicationController
     end
 
     def show
-        @words = Word.all  
         @word = Word.find(params[:id])
-        @definition = Definition.find(params[:id])
-        @definition = @word.definitions.find(params[:id])
-    
-        
+        @definition = Definition.new
+        # @user = Definition.find(params[:id])
     end
 
     def new
         @word = Word.new
         # @word.definitions.build
-        @definition = @word.definitions.build
         @words = Word.all
         # @definition = Definition.new
         # @definition = @word.definitions.new
-
     end
 
     def create
-        @words = Word.all
         @word = Word.new(word_params)
-        # @word.definitions.build
+        @word.user = current_user
         if @word.save
+            @word.definitions.create(content: params[:definition], user: current_user)
             redirect_to root_path
         else
             render :new
         end
-
     end
 
     def search
+        @definition = Definition.new
         @words = Word.all
         @word = Word.find_by_name(params[:name])
         if @word
             render action: 'show'
         else
-            redirect_to new_word_path
+            redirect_to new_word_path, alert: 'That word has not been defined yet. Want to add it?' if @word.nil?
+            
         end
     end
 
     private
         def word_params
-            params.require(:word).permit(:name, :user_id, definitions_attributes: [:content, :user_id, :word_id])
+            params.require(:word).permit(:name)
         end
 
 end

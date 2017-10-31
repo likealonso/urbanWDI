@@ -1,8 +1,21 @@
 <div class="container" style="border: 1px solid red">
     <div class = "col-md-8" style="border: 1px solid red">
         <h1><%= @word.name %></h1>
-        <h3>• <%= @word.definitions[0][:content] %></h3>
-        <%= link_to "Back", root_path %>    
+        <% @word.definitions.each do |d| %>
+            <h3>• <%= d.content %></h3> 
+            by <%= @word.user.name %>
+        <% end %>
+        
+        <br>
+        <br>
+    
+        <%= form_for [@word, @definition] do |f| %>
+            <%= f.label "Add your own definition" %>
+            <br>
+            <%= f.text_area :content, cols: "100", rows: "10" %>
+            <br>
+            <br>
+            <%= f.submit 'Add ' %>
+        <% end %>
     </div>
-
 </div>

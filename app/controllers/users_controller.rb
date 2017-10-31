@@ -2,9 +2,6 @@ class UsersController < ApplicationController
     before_action :authorize, except: [:index, :show, :new, :create]
     def index
         @users = User.all
-        @words = Word.all
-        @definitions = Definition.all
-        
     end
 
     def show
