@@ -71,8 +71,7 @@ class WordsController < ApplicationController
     end
 
     def random
-        offset = rand(Word.count)
-        @word = Word.offset(offset).first
+        @word = Word.all.sample
         @definition = Definition.new
         redirect_to word_path(@word)
     end

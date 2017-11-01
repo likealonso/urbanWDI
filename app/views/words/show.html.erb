@@ -1,23 +1,21 @@
 <div class="container" style="border: 1px solid red; background-color: white">
     <div class = "col-md-8" style="border: 1px solid red">
 
-    <div style="display:inline-block"> <h1><%= link_to @word.name, word_path(@word) %></h1></div> 
-    <% if current_user && current_user.id == @word.user.id %>
-        <div style="display:inline; margin: 0 0 0 20px"><%= link_to "Edit", edit_word_path(@word.id) %> </div>
-    <% end %>
+        <div style="display:inline-block"> <h1><%= link_to @word.name, word_path(@word) %></h1></div> 
+        <% if current_user && current_user.id == @word.user.id %>
+            <div style="display:inline; margin: 0 0 0 20px"><%= link_to "Edit", edit_word_path(@word.id) %> </div>
+        <% end %>
         <% @word.definitions.each_with_index do |d, index| %>
             <h3><div style="line-height: 30px"><%= index + 1 %>. <%= d.content %></div></h3> 
             by <%= d.user.name %> on <%= d.created_at.strftime("%m/%d/%y") %>
             
-        <% if current_user && current_user.id == d.user.id %>
-            | <%= link_to "Edit your definition", edit_definition_path(d) %>
-            | <%= link_to "Delete your definition", definition_path(d), method: :delete %>
+            <% if current_user && current_user.id == d.user.id %>
+                | <%= link_to "Edit your definition", edit_definition_path(d) %>
+                | <%= link_to "Delete your definition", definition_path(d), method: :delete %>
+            <% end %>
         <% end %>
-        <% end %>
-        
         <br>
         <br>
-    
         <%= form_for [@word, @definition] do |f| %>
             <%= f.label "Add your own definition" %>
             <br>
