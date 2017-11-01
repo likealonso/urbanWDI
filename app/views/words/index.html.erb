@@ -1,8 +1,8 @@
-<div class='container' style="border: 1px solid red" >
+<div class='container' style="border: 1px solid red; background-color: white" >
     <div class = "col-md-8" style="border: 1px solid red" >
         <h1><%= link_to @words.first.name, word_path(@words.first) %> </h1>
         <p> <% @word.definitions.each_with_index do |f, i| %> <p>
-            <h3> <%= i + 1%>. <%= f.content %> </h3> by <%= f.user.name %> on 
+            <h3> <div style="line-height: 30px"> <%= i + 1%>. <%= f.content %> </div> </h3> by <%= f.user.name %> on 
             <%= f.created_at.strftime("%m/%d/%y") %>  
             <%#= link_to "Edit your definition", edit_definition_path(f) %> 
             <%#= link_to "Delete your definition", definition_path(f), method: :delete %>

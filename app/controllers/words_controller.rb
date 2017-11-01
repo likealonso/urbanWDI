@@ -4,7 +4,7 @@ class WordsController < ApplicationController
         @words = Word.all
         @word = @words.first
         @definition = Definition.new
-
+        
     end
 
     def show
@@ -55,13 +55,26 @@ class WordsController < ApplicationController
     def search
         @definition = Definition.new
         @words = Word.all
-        @word = Word.find_by_name(params[:name])
+        # search_term = params[:name]
+        # search_term_no_s =
+        # @word = search_term || search_term_no_s
+        query = ActiveRecord::Base.connection.quote(params[:name])
+        sql = "LOWER(name) = LOWER(#{query})"
+        @word = Word.where(sql)[0]
+
         if @word
             render action: 'show'
         else
             redirect_to new_word_path, alert: 'That word has not been defined yet. Want to add it?' if @word.nil?
             
         end
+    end
+
+    def random
+        offset = rand(Word.count)
+        @word = Word.offset(offset).first
+        @definition = Definition.new
+        redirect_to word_path(@word)
     end
 
     private

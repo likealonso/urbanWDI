@@ -11,8 +11,8 @@
 
   <% @words = Word.all %>
 
-  <body>
-    <div class="container" style="border: 1px solid red; background-color: #2aafa9">
+  <body style="background-color: #4C0D0E">
+    <div class="container" style="border: 1px solid red; background-color: #9D0910">
       <p>
         <% if current_user %>
           Welcome, <%= current_user.name %>
@@ -27,11 +27,10 @@
         <%= link_to "Home", root_path %>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <%= flash[:notice] %>
-          
-      
       </p>
       <h1 class= "navbar-header" style="text-align:center; border: 1px solid red; color: #17252a; 
-      font-family: 'Lato', sans-serif; font-weight:bold; font-size: 80px">Urban Rails</h1>
+      font-family: 'Lato', sans-serif; font-weight:bold; font-size: 80px; color: white; padding: 0 0 0 50px">Urban Rails</h1>
+      <br>
       <br>
       <div style= "text-align:center; border: 1px solid red">
         <%= form_tag search_path, method: :get do %>
@@ -41,15 +40,18 @@
       </div>
       <br>
       <div style= "text-align:center; border: 1px solid red">
-          <button type="button" class="btn btn-secondary" style="width:100px">
-          <%= link_to "Add", new_word_path %> </button>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button type="button" class="btn btn-secondary" style="width:100px">Random</button>
+          <div class="btn btn-default" style="display: inline-block; margin: 0 0 15px 0">
+          <%= link_to "Add", new_word_path %> </div>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          
+          <a href="/random">
+            <div class="btn btn-default" style="display: inline-block; margin: 0 0 15px 0">Random</div>
+          </a>
       </div>
       </div>
-      <br>
-      <br>
       <div class= "col-md-4" style="border: 4px solid red; float:right" >
-          <% @words.each do |w| %>
+          <% @words.take(10).each do |w| %>
             <h3><%= link_to w.name, word_path(w) %></h3>
           <% end %>
       </div>

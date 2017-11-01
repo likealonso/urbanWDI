@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get '/login', to: 'sessions#new'
   get '/search', to: 'words#search'
+  get '/random', to: 'words#random'
   
 end
 
