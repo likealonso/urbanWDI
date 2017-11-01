@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ 
+.ur-random-button {
+    display: inline-block; 
+    margin: 0 0 15px 0;
+}
