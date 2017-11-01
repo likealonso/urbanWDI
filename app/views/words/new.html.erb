@@ -6,9 +6,12 @@
         <%= form.label :name %>
         <%= form.text_field :name %>
         <br>
+        <br>
         <%= label_tag 'Definition' %>
-        <%= text_field_tag :definition %>
-        <%= form.submit 'Save' %>
+        <%= text_area_tag :definition, nil, rows: 10, cols: 100 %>
+        <br>
+        <%= form.submit 'Do it', options = {class: "btn btn-primary"}%>
+        
     <% end %>
 </div>
 

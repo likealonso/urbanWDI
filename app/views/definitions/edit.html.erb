@@ -1,0 +1,12 @@
+<div class="container">
+<h1>Edit your word: <%= @definition.word.name %> </h1>
+    <%= flash[:notice] %>
+
+    <%= form_for @definition do | form | %>
+        <%= form.label :content %>
+        <br>
+        <%= form.text_area :content, cols: "100", rows: "10" %>
+        <br>
+        <%= form.submit 'Update', options = {class:"btn btn-primary"} %>
+    <% end %>
+</div>

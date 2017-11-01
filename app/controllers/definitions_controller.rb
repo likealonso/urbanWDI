@@ -1,5 +1,6 @@
 class DefinitionsController < ApplicationController
     # before_action :load_word
+    before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
     def index
         @words = Word.all
         @definitions = @word.definitions.all
@@ -21,6 +22,29 @@ class DefinitionsController < ApplicationController
         @definition.save
         redirect_to word_path(params[:word_id])
     end
+
+    def edit
+        @definition = Definition.find(params[:id])
+        
+       
+    end
+
+    def update
+        @definition = Definition.find(params[:id])
+        if @definition.update_attributes(definition_params) && @definition.user.id == current_user.id
+          redirect_to word_path(@definition.word)
+        else
+          flash[:notice] = "You don't have access to edit this page"
+          render :edit
+        end
+    end
+
+    def destroy
+        @definition = Definition.find(params[:id])
+        @definition.destroy
+        redirect_to word_path(@definition.word)
+    end
+
 
     private
 

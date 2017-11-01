@@ -1,13 +1,10 @@
 class WordsController < ApplicationController
+    before_action :authorize, only: [:new, :create, :edit]
     def index
         @words = Word.all
-        # @words = Word.all
-        # if params[:name]
-        #   @posts = Word.search(params[:name]).order("created_at DESC")
-        # else
-        #   @posts = Word.all.order('created_at DESC')
-        # end
-        # @word = Word.first
+        @word = @words.first
+        @definition = Definition.new
+
     end
 
     def show
@@ -29,10 +26,30 @@ class WordsController < ApplicationController
         @word.user = current_user
         if @word.save
             @word.definitions.create(content: params[:definition], user: current_user)
-            redirect_to root_path
+            redirect_to word_path(@word)
         else
             render :new
         end
+    end
+
+    def edit
+        @word = Word.find(params[:id])
+        
+    end
+
+    def update
+        @word = Word.find(params[:id])
+        if @word.update_attributes(word_params)
+          redirect_to word_path(@word)
+        else
+          render :edit
+        end
+    end
+
+    def destroy
+        @word = Word.find(params[:id])
+        @word.destroy
+        redirect_to words_path
     end
 
     def search
@@ -49,7 +66,7 @@ class WordsController < ApplicationController
 
     private
         def word_params
-            params.require(:word).permit(:name)
+            params.require(:word).permit(:name, definitions_attributes:[:content])
         end
 
 end

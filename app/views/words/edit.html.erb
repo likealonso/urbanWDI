@@ -1,0 +1,12 @@
+<div class="container">
+<h3>Edit your word:</h3>
+<h1> <%= @word.name %> </h1>
+
+    <%= form_for @word do | form | %>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <br>
+        <br>
+    <%= form.submit 'Update', options = {class:"btn btn-primary"} %>
+    <% end %>
+</div>

@@ -1,11 +1,23 @@
 <div class='container' style="border: 1px solid red" >
-    
     <div class = "col-md-8" style="border: 1px solid red" >
-        <h2><%= link_to @words.first.name, word_path(@words.first) %> </h2>
-        <h4> • <%= @words.first.definitions[0].content %> </h4>
-
+        <h1><%= link_to @words.first.name, word_path(@words.first) %> </h1>
+        <p> <% @word.definitions.each_with_index do |f, i| %> <p>
+            <h3> <%= i + 1%>. <%= f.content %> </h3> by <%= f.user.name %> on 
+            <%= f.created_at.strftime("%m/%d/%y") %>  
+            <%#= link_to "Edit your definition", edit_definition_path(f) %> 
+            <%#= link_to "Delete your definition", definition_path(f), method: :delete %>
+        <% end %>
+            <br>
+            <br>
+        <%= form_for [@word, @definition] do |f| %>
+            <%= f.label "Add your own definition" %>
+            <br>
+            <%= f.text_area :content, cols: "100", rows: "10" %>
+            <br>
+            <br>
+            <%= f.submit 'Add ', options = {class:"btn btn-primary"} %>
+        <% end %>
     </div>
-    
 </div>
 
 
