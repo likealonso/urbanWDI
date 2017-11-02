@@ -11,8 +11,10 @@
 
   <% @words = Word.all %>
   
-  <body style="background-color: #4C0D0E">
-    <div class="container" style="background-color: #9D0910">
+  <body style="background-color: #1D2439">
+  
+    <div class="container-fluid" style="background-color: #1D2439">
+
       <p style="color:white">
         <% if current_user %>
           Welcome, <%= current_user.name %>
@@ -25,45 +27,32 @@
         <% end %>
           &nbsp;&nbsp;|&nbsp;&nbsp;
         <%= link_to "Home", root_path, style: "color:white" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
         <%= flash[:notice] %>
       </p>
-      <h1 class= "navbar-header" style="text-align:center; color: #17252a; 
-      font-family: 'Lato', sans-serif; font-weight:bold; font-size: 80px; color: white; padding: 0 0 0 50px">
-      Urban Rails</h1>
-        <br>
-        <br>
-      <div style= "text-align:center">
-        <%= form_tag search_path, method: :get do %>
-        <%= text_field_tag :name, value = nil, options = {style:"font-size: 20px; width:400px; height: 50px; margin: 0 10px 0 80px"} %>
-        <%= submit_tag "Search", options = {class:"btn btn-primary"} %>
-        <% end %>
-      </div>
-      <br>
-      <div style= "text-align:center">
-          
-        <div class="ur-random-button">
+      
+      <div style="text-align:center">
+        <h1 class= "ur-rails-header">Urban Rails</h1>
+        
+        <div style= "text-align:center; display: inline-block">
+          <%= form_tag search_path, method: :get do %>
+          <%= text_field_tag :name, value = nil, options = {class:"search-bar"} %>
+          &nbsp;&nbsp;
+          <%= submit_tag "Search", options = {class:"btn btn-primary"} %>
+          <% end %>
+        </div>
+          &nbsp;&nbsp;
+
+        <div class="ur-button">
           <%= button_to('Add', '/words/new',  method: 'get', class: 'btn btn-default') %>
         </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="ur-random-button">
+          &nbsp;&nbsp;
+        <div class="ur-button">
           <%= button_to('Random', '/random',  method: 'post', class: 'btn btn-default') %>
         </div>
-          <!-- <a href="/random">
-            <div class="btn btn-default" style="display: inline-block; margin: 0 0 15px 0">Random</div>
-          </a> -->
+      
       </div>
-      </div>
-      <br>
-      <div class= "col-md-4" style="float:right" >
-      <h2>First 10</h2>
-          <% @words.take(10).each do |w| %>
-            <p><%= link_to w.name, word_path(w), options= {style: "color: #134FE6; font-size: 25px; font-weight: 500"} %></p>
-          <% end %>
-
-
-
-      </div>
+    </div>
       
     <%= yield %>
     

@@ -13,8 +13,99 @@
  *= require_tree .
  *= require_self
  */
- 
-.ur-random-button {
+ body > div:nth-child(1) a {
+     color: white
+ }
+ body > div:nth-child(2) > div.col-md-8.show-word > h1 > a{
+    color: #134FE6; 
+ }
+
+.word-link {
+    color: #134FE6; 
+    font-size: 25px; 
+    font-weight: 500
+}
+
+.ur-button {
     display: inline-block; 
     margin: 0 0 15px 0;
+}
+
+.container-fluid {
+    padding: 0 12%;
+}
+
+.ur-rails-header {
+    font-family: 'Lato', sans-serif; 
+    font-weight: bold; 
+    font-size: 60px; 
+    color: white; 
+    padding: 0 0 10px 0;
+    display: inline-block;
+    position: relative;
+    top: 10px
+
+}
+
+.search-bar {
+    font-size: 20px; 
+    width:250px; 
+    height: 50px; 
+    margin: 0 10px 20px 50px;
+    
+}
+
+.top-ten {
+    background-color: white; 
+    margin: 20px 0; 
+    padding: 10px 20px; 
+    float: right;
+}
+
+.show-word {
+    background-color: white; 
+    margin: 20px 0 0 0; 
+    padding: 10px 35px
+}
+
+.container-form {
+    display: inline-block
+}
+
+
+@media only screen and (max-width: 800px){
+    .ur-rails-header{
+    font-size: 40px;
+    font-family: 'Lato', sans-serif;  
+    padding: 0 0 10px 0;
+    
+    
+    
+    }
+    .ur-random-button {
+        background-color:blue;
+        margin: 0 0 15px 0;
+    
+    }
+    .container-fluid {
+        padding: 0 0;
+    }
+
+    .top-ten {
+        background-color: white;
+        padding: 10px 35px; 
+        width: 200px;
+        margin: 20px 50px 0 0;
+        float: left
+        
+    }
+
+    .show-word {
+        background-color: white; 
+        margin: 20px 0 0 0; 
+        padding: 10px 35px;
+        width: 500px;
+        display: inline-block;
+    }
+    
 }
