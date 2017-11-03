@@ -2,7 +2,7 @@
 ## Description
 Aimed at those studying the framework of the computer language Ruby, Urban Rails is a dictionary-type web application with words and definitions provided by its users that looks to provide simplified descriptions to the framework's numerous terms.
 
- [Imgur](https://i.imgur.com/zGivq8O.png)
+ ![Alt Text](https://i.imgur.com/zGivq8O.png)
 
 ## Technologies used
 HTML, CSS, Ruby, Ruby on Rails, Bootstrap,
