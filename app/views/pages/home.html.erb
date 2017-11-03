@@ -1,6 +1,6 @@
 <div class="container-fluid" style="background-color: #E1E1E3">
     <div class ="show-word">
-        <div class="word-name"> 
+        <div class="word-name">
         <%= link_to @words.first.name, word_path(@words.first) %> </div>
             <p><% @word.definitions.each_with_index do |f, i| %> </p>
             <div class="word-content"><%= i + 1%>. <%= f.content %> </div> 
