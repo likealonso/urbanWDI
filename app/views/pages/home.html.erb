@@ -1,0 +1,39 @@
+<div class="container-fluid" style="background-color: #E1E1E3">
+    <div class ="show-word">
+        <div class="word-name"> 
+        <%= link_to @words.first.name, word_path(@words.first) %> </div>
+            <p><% @word.definitions.each_with_index do |f, i| %> </p>
+            <div class="word-content"><%= i + 1%>. <%= f.content %> </div> 
+            <div class="author-content">by <%= f.user.name %> on <%= f.created_at.strftime("%m/%d/%y") %></div>  
+        <% end %>
+        <br>
+        <%= form_for [@word, @definition] do |f| %>
+            <%= f.label "Add your own definition" %>
+            <br>
+            <%= f.text_area :content, cols: "60", rows: "10" %>
+            <br>
+            <br>
+            <%= f.submit 'Add ', options= {class:"btn btn-primary ", 
+          style:"background-color: #515151; border: 1px solid #515151"} %>
+        <% end %>
+    </div>
+    <div class="add-word" style="background-color: white; display: inline-block">
+        <h4><%= flash[:alert] %></h4>
+
+        <div class="word-name" style="color: #333">Add a new word</div>
+        <br>
+        <%= form_for @new_word do | form | %>
+            <%= form.label :name %><br>
+            <%= form.text_field :name %>
+            <br>
+            <br>
+            <%= label_tag 'Definition' %>
+            <br>
+            <%= text_area_tag :definition, nil, rows: 10, cols: 25 %>
+            <br>
+            <br>
+            <%= form.submit 'Do it', options = {class:"btn btn-primary ", 
+          style:"background-color: #515151; border: 1px solid #515151"}%>
+        <% end %>
+    </div>
+</div>

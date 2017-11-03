@@ -1,88 +1,19 @@
-<div class="container" style="border: 1px solid red; background-color: white">
-    <h4><%= flash[:alert] %></h4>
-    <h1>Add a new word</h1>
-
-    <%= form_for @word do | form | %>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-        <br>
-        <br>
-        <%= label_tag 'Definition' %>
-        <br>
-        <%= text_area_tag :definition, nil, rows: 10, cols: 100 %>
-        <br>
-        <br>
-        <%= form.submit 'Do it', options = {class: "btn btn-primary"}%>
-        
-    <% end %>
+<div class="container-signup" style="background-color: #E1E1E3">
+    <div class="inside-signup">
+      <div style="font-style:italic"><h4><%= flash[:alert] %></h4></div>
+      <div class="word-name" style="margin: 0 0 10px 0">Add a new word</div>
+        <%= form_for @word do | form | %>
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+          <br>
+          <br>
+          <%= label_tag 'Definition' %>
+          <br>
+          <%= text_area_tag :definition, nil, rows: 9, cols: 100 %>
+          <br>
+          <br>
+          <%= form.submit 'Do it', options = {class:"btn btn-primary ", 
+            style:"background-color: #515151; border: 1px solid #515151"}%>
+      <% end %>
+  </div>
 </div>
-
-
-
-<!--
-
-<%= form_for @word do  |f|%>
-    <h3>New word:</h3>
-
-    <%= f.fields_for :definitions do |field| %>
-        <%= field.label "Content" %>
-        <%= field.text_field :content %>
-    <% end %>
-
-    <%=f.submit  %>
-<% end %>
-
-
-
-
-
-
-<%#= form_for @word do |f| %>
-  Word:
-  <ul>
-    <%#= f.fields_for :words do |definition_form| %>
-      <li>
-        <%#= definition_form.label :content %>
-        <%#= definition_form.text_field :content %>
-        <%#= definition_form.submit :content %>
-        
-      </li>
-    <%# end %>
-  </ul>
-<%# end %>
-
-
-
-
-
-
-
-<%#= form_for @word do |f| %>
-  <%# if @word.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <%# for message in @word.errors.full_messages %>
-          <li><%#= message %></li>
-        <%# end %>
-      </ul>
-    </div>
-  <%# end %>
-  <div class="field">
-    <%#= f.label :name %>
-    <%#= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%#= f.label :user_id %>
-    <%#= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%#= f.label :content %>
-    <%#= f.text_field :content %>
-  </div>
-  
-  <div class="actions"><%#= f.submit %></div>
-<%# end %>
-<br>
-<%#= link_to "Back", root_path %>
-</div>-->

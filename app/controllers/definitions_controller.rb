@@ -1,5 +1,4 @@
 class DefinitionsController < ApplicationController
-    # before_action :load_word
     before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
     def index
         @words = Word.all
@@ -51,10 +50,5 @@ class DefinitionsController < ApplicationController
     def definition_params
         params.require(:definition).permit(:content, :word_id, :user_id)
     end
-
-    # def load_word
-    #     @word = Word.find(params[:word_id])
-        
-    # end
 
 end

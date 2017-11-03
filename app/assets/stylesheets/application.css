@@ -13,99 +13,192 @@
  *= require_tree .
  *= require_self
  */
- body > div:nth-child(1) a {
-     color: white
- }
- body > div:nth-child(2) > div.col-md-8.show-word > h1 > a{
-    color: #134FE6; 
+
+ .add-word {
+     width:250px;
+     float: right;
+     margin: 20px 0;
+     padding: 15px 25px;   
  }
 
 .word-link {
-    color: #134FE6; 
-    font-size: 25px; 
-    font-weight: 500
+    color:#333; 
+    font-size: 22px; 
+    font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700;
+    
 }
 
 .ur-button {
+    color: black; 
+    background-color: #dee2e8; 
     display: inline-block; 
-    margin: 0 0 15px 0;
+    border-radius: 5px
 }
 
 .container-fluid {
-    padding: 0 12%;
+    padding: 0 15%;
 }
 
+.container-signup {
+    margin: 20px 0 0 0;
+    padding: 40px 15%;
+    height: 520px;
+    
+}
 .ur-rails-header {
-    font-family: 'Lato', sans-serif; 
+    font-family: 'Montserrat', sans-serif; 
     font-weight: bold; 
-    font-size: 60px; 
+    font-size: 40px; 
     color: white; 
+    letter-spacing: 2px;
     padding: 0 0 10px 0;
     display: inline-block;
     position: relative;
-    top: 10px
+    top: 6px
 
 }
 
 .search-bar {
     font-size: 20px; 
-    width:250px; 
+    width: 260px; 
     height: 50px; 
-    margin: 0 10px 20px 50px;
+    margin: 0 10px 20px 30px;
+    padding: 10px
     
 }
 
-.top-ten {
-    background-color: white; 
-    margin: 20px 0; 
-    padding: 10px 20px; 
-    float: right;
+.first-ten {
+    color: #1D2439; 
+    font-family: 'Lora', Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 700
 }
 
 .show-word {
     background-color: white; 
     margin: 20px 0 0 0; 
-    padding: 10px 35px
+    padding: 25px 35px 10px 35px;
+    display: inline-block;
+}
+
+.browse-word {
+    background-color: white; 
+    margin: 20px 0; 
+    padding: 25px 35px 10px 35px;
+    display: inline-block;
+    width: 900px;
+    height: 495px;
+    
+}
+
+.word-name {
+    font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700;
+    font-size: 32px;
+}
+.word-content {
+    font-size: 16px;
+    font-family:"Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    line-height: 25px
+}
+
+.author-content {
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-size: 16px;;
+    font-weight: 700;
+    padding: 10px 0
 }
 
 .container-form {
     display: inline-block
 }
 
+.inside-signup {
+    background-color: white; 
+    margin: -10px 0 0 0; 
+    padding: 15px 35px 20px 35px;
+    display: inline-block;
 
-@media only screen and (max-width: 800px){
-    .ur-rails-header{
-    font-size: 40px;
-    font-family: 'Lato', sans-serif;  
-    padding: 0 0 10px 0;
-    
-    
-    
+}
+.signup-page {
+    padding: 20px 15%;
+    margin: -10px 0 0 0;
+    background-color: white
+
+}
+
+.login-page {
+    padding: 40px 15%;
+    margin: -10px 0 0 0;
+    background-color: white;
+    height: 400px
+}
+
+.edit-page {
+    padding: 20px 15%;
+    margin: -10px 0 0 0;
+    background-color: white;
+    height: 450px
+}
+
+body > div:nth-child(1) a {
+    color: white
+}
+
+body > div:nth-child(2) > div.show-word > div > a{
+   color: #333; 
+}
+
+@media only screen and (min-width: 320px)  { 
+    .show-word {
+        width: 400px;
+        display: block;
     }
-    .ur-random-button {
-        background-color:blue;
-        margin: 0 0 15px 0;
     
-    }
-    .container-fluid {
-        padding: 0 0;
+    #definition_content {
+        width: 300px;
     }
 
-    .top-ten {
-        background-color: white;
-        padding: 10px 35px; 
-        width: 200px;
-        margin: 20px 50px 0 0;
-        float: left
+}
+@media only screen and (min-width: 800px)  { 
+    .show-word {
+        width: 600px;
+        display: inline-block;
+    }
+    #definition_content {
+        width: 500px;
+    }
+
+}
+@media only screen and (min-width: 980px)  { 
+    .show-word {
+        width: 400px;
+        display: inline-block;
+    }
+    #definition_content {
+        width: 300px;
         
     }
-
+}
+@media only screen and (min-width: 1100px) { 
     .show-word {
-        background-color: white; 
-        margin: 20px 0 0 0; 
-        padding: 10px 35px;
-        width: 500px;
+        width: 550px;
         display: inline-block;
     }
     
+    #definition_content {
+        width: 450px;
+    }
+}
+
+@media only screen and (min-width: 1220px) { 
+    .show-word {
+        width: 600px;
+        display: inline-block;
+    }
+    #definition_content {
+        width: 500px;
+        height: 150px
+        
+    }
 }

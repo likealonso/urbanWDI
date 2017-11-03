@@ -4,18 +4,17 @@
     <title>UrbanRails</title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <% @words = Word.all %>
   
-  <body style="background-color: #1D2439">
-  
-    <div class="container-fluid" style="background-color: #1D2439">
-
-      <p style="color:white">
+  <body style="background-color: #DA222A">
+    <div class="container-fluid" style="background-color: #DA222A">
+      <p style="color:white; padding: 10px 0 0 0">
         <% if current_user %>
           Welcome, <%= current_user.name %>
           &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -27,29 +26,35 @@
         <% end %>
           &nbsp;&nbsp;|&nbsp;&nbsp;
         <%= link_to "Home", root_path, style: "color:white" %>
-          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;
         <%= flash[:notice] %>
       </p>
       
       <div style="text-align:center">
-        <h1 class= "ur-rails-header">Urban Rails</h1>
-        
-        <div style= "text-align:center; display: inline-block">
-          <%= form_tag search_path, method: :get do %>
-          <%= text_field_tag :name, value = nil, options = {class:"search-bar"} %>
-          &nbsp;&nbsp;
-          <%= submit_tag "Search", options = {class:"btn btn-primary"} %>
-          <% end %>
-        </div>
-          &nbsp;&nbsp;
-
-        <div class="ur-button">
-          <%= button_to('Add', '/words/new',  method: 'get', class: 'btn btn-default') %>
-        </div>
-          &nbsp;&nbsp;
-        <div class="ur-button">
-          <%= button_to('Random', '/random',  method: 'post', class: 'btn btn-default') %>
-        </div>
+        <h1 class= "ur-rails-header">URBAN RAILS</h1>
+          <div style= "text-align:center; display: inline-block">
+            <%= form_tag search_path, method: :get do %>
+            
+            <%= text_field_tag :name, value = nil, options = {placeholder: "Get your Rails on!", class:"search-bar"} %>
+            
+            &nbsp;&nbsp;
+            
+            <%= submit_tag "Search", options = {class:"btn btn-primary ", 
+            style:"background-color: #515151; border: 1px solid #515151"} %>
+            
+            <% end %>
+          </div>
+            &nbsp;&nbsp;
+          
+          <div class="ur-button">
+            <%= button_to('Browse', '/words',  method: 'get', class:"btn btn-primary ", 
+            style:"background-color: #515151; border: 1px solid #515151") %>
+          </div>
+            &nbsp;&nbsp;
+          <div class="ur-button">
+            <%= button_to('Random', '/random',  method: 'post', class:"btn btn-primary ", 
+            style:"background-color: #515151; border: 1px solid #515151") %>
+          </div>
       
       </div>
     </div>

@@ -1,12 +1,16 @@
-<div class="container" style="background-color: white">
-<h1>Edit your word: <%= @definition.word.name %> </h1>
-    <%= flash[:notice] %>
+<div class="container-signup" style="background-color: #E1E1E3">
+    <div class="edit-page">
+        <div class="word-name" style="margin: 0 0 15px 0">Edit your word: 
+        <%= @definition.word.name %> </div>
+         <%= flash[:notice] %>
 
-    <%= form_for @definition do | form | %>
-        <%= form.label :content %>
-        <br>
-        <%= form.text_area :content, cols: "100", rows: "10" %>
-        <br>
-        <%= form.submit 'Update', options = {class:"btn btn-primary"} %>
-    <% end %>
+        <%= form_for @definition do | form | %>
+            <%= form.label :content %>
+            <br>
+            <%= form.text_area :content, cols: "100", rows: "10" %>
+            <br><br>
+            <%= form.submit 'Update', options = {class:"btn btn-primary ", 
+            style:"background-color: #515151; border: 1px solid #515151"} %>
+        <% end %>
+    </div>
 </div>

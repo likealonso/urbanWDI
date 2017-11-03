@@ -1,34 +1,39 @@
-<div class="container" style="background-color: white">
-<h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="container-signup" style="background-color: #E1E1E3">
+  <div class="signup-page">
+    <div class="word-name">Sign Up</div>
+      <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <div class="error_messages">
+            <h2>Form is invalid</h2>
+            <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <form>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, options={type:"text", class:"form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, options={type:"email", class:"form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, options={type:"password", class:"form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, options={type:"password", class:"form-control"} %>
+        </div>
+        <br>
+        <div><%= f.submit 'New user', options={class:"btn btn-primary ", 
+              style:"background-color: #515151; border: 1px solid #515151"} %>
+        </div>
+          <% end %>
+      </form>
   </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions"><%= f.submit %></div>
-<% end %>
-<br>
-<%= link_to "Back", root_path %>
 </div>

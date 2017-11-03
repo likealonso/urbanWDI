@@ -1,31 +1,15 @@
 <div class="container-fluid" style="background-color: #E1E1E3">
-    <div class ="col-md-8 show-word">
-            
-        <h1><%= link_to @words.first.name, word_path(@words.first) %> </h1>
-        <p> <% @word.definitions.each_with_index do |f, i| %> <p>
-            <h3> <div style="line-height: 30px"> <%= i + 1%>. <%= f.content %> </div> </h3> 
-            by <%= f.user.name %> on <%= f.created_at.strftime("%m/%d/%y") %>  
-            <%#= link_to "Edit your definition", edit_definition_path(f) %> 
-            <%#= link_to "Delete your definition", definition_path(f), method: :delete %>
-        <% end %>
+    <div class ="browse-word">
+        <div class="word-name" style="text-align:center">Browse through the world of Rails</div>
             <br>
             <br>
-        <%= form_for [@word, @definition] do |f| %>
-            <%= f.label "Add your own definition" %>
-            <br>
-            <%= f.text_area :content, cols: "60`", rows: "10" %>
-            <br>
-            <br>
-            <%= f.submit 'Add ', options= {class:"btn btn-primary", style:"margin: 0 0 10px 0"} %>
-        <% end %>
-    </div>
-    <div class = "col-md-3 top-ten">
-        <h2 style="color: #1D2439">First 10</h2>
-        <% @words.take(10).each do |w| %>
-            <p><div style="color: #134FE6; font-size: 16px; display: inline-block"> •&nbsp; </div>
-            <%= link_to w.name, word_path(w), options= {class: "word-link"} %></p>
-        <% end %>
+            <div style="columns:3; justify-content: center; flex-direction: column; text-align: center">    
+            <% @words.each do |w| %>
+                <p>
+                <div style="color: black; font-size: 20px; display: inline-block"> •&nbsp; </div>
+                <%= link_to w.name, word_path(w), options= {class: "word-link"} %>
+                </p>
+            <% end %>
+        </div>
     </div>
 </div>
-
-

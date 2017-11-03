@@ -1,24 +1,22 @@
 class WordsController < ApplicationController
-    before_action :authorize, only: [:new, :create, :edit]
+    before_action :authorize, only: [:create, :edit]
     def index
         @words = Word.all
         @word = @words.first
         @definition = Definition.new
+        @new_word = Word.new
         
     end
 
     def show
         @word = Word.find(params[:id])
         @definition = Definition.new
-        # @user = Definition.find(params[:id])
+        @new_word = Word.new
     end
 
     def new
         @word = Word.new
-        # @word.definitions.build
         @words = Word.all
-        # @definition = Definition.new
-        # @definition = @word.definitions.new
     end
 
     def create
@@ -55,9 +53,7 @@ class WordsController < ApplicationController
     def search
         @definition = Definition.new
         @words = Word.all
-        # search_term = params[:name]
-        # search_term_no_s =
-        # @word = search_term || search_term_no_s
+        @new_word = Word.new
         query = ActiveRecord::Base.connection.quote(params[:name])
         sql = "LOWER(name) = LOWER(#{query})"
         @word = Word.where(sql)[0]
@@ -65,7 +61,7 @@ class WordsController < ApplicationController
         if @word
             render action: 'show'
         else
-            redirect_to new_word_path, alert: 'That word has not been defined yet. Want to add it?' if @word.nil?
+            redirect_to new_word_path, alert: "The word #{query} has not been defined yet. Want to add it?" if @word.nil?
             
         end
     end

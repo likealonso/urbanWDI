@@ -1,31 +1,50 @@
-<div class="container-fluid" style="background-color: white">
-    <div class="col-md-8">
-        
-        <div style="display:inline-block"> <h1><%= link_to @word.name, word_path(@word), options= {style: "color: #134FE6"} %></h1></div> 
+<div class="container-fluid" style="background-color: #E1E1E3">
+    <div class ="show-word">
+        <div style="display:inline-block"> <%= link_to @word.name, word_path(@word), options= {class:"word-name"} %></div> 
         <% if current_user && current_user.id == @word.user.id %>
             <div style="display:inline; margin: 0 0 0 20px"><%= link_to "Edit", edit_word_path(@word.id) %> </div>
         <% end %>
-        <% @word.definitions.each_with_index do |d, index| %>
-            <h3><div style="line-height: 30px"><%= index + 1 %>. <%= d.content %></div></h3> 
-            by <%= d.user.name %> on <%= d.created_at.strftime("%m/%d/%y") %>
-            
+        <p><% @word.definitions.each_with_index do |d, index| %></p>
+        <div class="word-content"><%= index + 1 %>. <%= d.content %> </div>
+        <div class="author-content">by <%= d.user.name %> on <%= d.created_at.strftime("%m/%d/%y") %></div>
             <% if current_user && current_user.id == d.user.id %>
-                | <%= link_to "Edit your definition", edit_definition_path(d) %>
+                <div style="color: #134FE6; font-size:13px; padding-bottom:15px">
+                <%= link_to "Edit your definition", edit_definition_path(d) %>
                 | <%= link_to "Delete your definition", definition_path(d), method: :delete %>
+                </div>
             <% end %>
         <% end %>
         <br>
-        <br>
         <%= form_for [@word, @definition] do |f| %>
-            <%= f.label "Add your own definition" %>
+            <%= f.label "Add your own definition", options={style:"font-style: italic"} %>
             <br>
-            <%= f.text_area :content, cols: "100", rows: "10" %>
+            <%= f.text_area :content, cols: "100", rows: "5" %>
             <br>
             <br>
-            <%= f.submit 'Add ', options= {class:"btn btn-primary", style:"margin: 0 0 10px 0"} %>
+            <%= f.submit 'Add ', options= {class:"btn btn-primary ", 
+          style:"background-color: #515151; border: 1px solid #515151"} %>
         <% end %>
     </div>
-    
-    
+
+    <div class="add-word" style="background-color: white; display: inline-block ">
+        <h4><%= flash[:alert] %></h4>
+
+        <div class="word-name" style="color: #333">Add a new word</div>
+        <br>
+        <%= form_for @new_word do | form | %>
+            <%= form.label :name %><br>
+            <%= form.text_field :name %>
+            <br>
+            <br>
+            <%= label_tag 'Definition' %>
+            <br>
+            <%= text_area_tag :definition, nil, rows: 10, cols: 26 %>
+            <br>
+            <br>
+            <%= form.submit 'Do it', options = {class:"btn btn-primary ", 
+          style:"background-color: #515151; border: 1px solid #515151"}%>
+            
+        <% end %>
+    </div>
 </div>
 
