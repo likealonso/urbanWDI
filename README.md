@@ -1,8 +1,8 @@
-# Urban Rails
+# Urban WDI
 ## Description
 Aimed at those studying the framework of the computer languages JavaScript and Ruby, Urban WDI is a dictionary-type web application with words and definitions provided by its users that looks to provide simplified descriptions to the frameworks' numerous terms.
 
- ![Alt Text](https://i.imgur.com/zGivq8O.png)
+ ![Alt Text](https://i.imgur.com/S2cEQKv.png)
 
 ## Technologies used
 HTML, CSS, Ruby, Ruby on Rails, Bootstrap, Heroku.
