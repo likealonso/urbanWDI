@@ -3,7 +3,6 @@
         <div class="word-name" style="margin: 0 0 15px 0">Edit your word: 
         <%= @definition.word.name %> </div>
          <%= flash[:notice] %>
-
         <%= form_for @definition do | form | %>
             <%= form.label :content %>
             <br>

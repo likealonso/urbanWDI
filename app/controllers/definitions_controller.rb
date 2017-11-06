@@ -24,7 +24,6 @@ class DefinitionsController < ApplicationController
 
     def edit
         @definition = Definition.find(params[:id])
-        
        
     end
 
